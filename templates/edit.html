@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <title>Randevu Güncelle</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+    <h1>✏️ Randevu Güncelle</h1>
+
+    {% if error %}
+    <div class="error-message">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST">
+        <input type="text" name="name" required value="{{ appt.name }}" placeholder="Adınız Soyadınız" />
+        <select name="service" required>
+            {% for service, price in prices.items() %}
+            <option value="{{ service }}" {% if appt.service == service %}selected{% endif %}>
+                {{ service }} - {{ price }}
+            </option>
+            {% endfor %}
+        </select>
+        <input type="date" name="date" required value="{{ date }}" />
+        <input type="time" name="time" required value="{{ time }}" />
+        <button type="submit">Güncelle</button>
+    </form>
+
+    <a href="{{ url_for('index') }}">Ana Sayfaya Dön</a>
+</body>
+</html>

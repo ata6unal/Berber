@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <title>Berber Randevu Sistemi</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <style>
+        .centered-title {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Berber Randevu Sistemi</h1>
+
+    <p>Hoşgeldiniz, {{ username }}! <a href="{{ url_for('logout') }}">Çıkış Yap</a></p>
+
+    {% if error %}
+    <div class="error-message">{{ error }}</div>
+    {% endif %}
+
+    <div class="centered-title">
+        <h2>Randevu Al</h2>
+    </div>
+
+    <form method="POST">
+        <label>Adınız Soyadınız:</label>
+        <input type="text" name="name" value="{{ form_data.name if form_data else '' }}" required />
+
+        <label>Hizmet:</label>
+        <select name="service" required>
+            {% for servis, fiyat in prices.items() %}
+            <option value="{{ servis }}" {% if form_data and form_data.service == servis %}selected{% endif %}>{{ servis }} ({{ fiyat }})</option>
+            {% endfor %}
+        </select>
+
+        <label>Tarih:</label>
+        <input type="date" name="date" value="{{ form_data.date if form_data else '' }}" required />
+
+        <label>Saat:</label>
+        <input type="time" name="time" value="{{ form_data.time if form_data else '' }}" required />
+
+        <button type="submit">Randevu Al</button>
+    </form>
+
+    <h2>Randevularınız</h2>
+    <ul>
+        {% for appt in appointments %}
+        <li>
+            {{ appt.datetime }} - {{ appt.name }} - {{ appt.service }}
+            <form action="{{ url_for('delete_appointment') }}" method="POST" style="display:inline;">
+                <input type="hidden" name="datetime" value="{{ appt.datetime }}" />
+                <button type="submit">Sil</button>
+            </form>
+            <a href="{{ url_for('edit_appointment', datetime_str=appt.datetime) }}">Düzenle</a>
+        </li>
+        {% else %}
+        <li>Henüz randevunuz yok.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

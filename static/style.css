@@ -1,0 +1,151 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+.top-bar {
+    max-width: 600px;
+    margin: 0 auto 20px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+}
+
+.top-bar a {
+    color: #e74c3c;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #34495e;
+    margin-top: 40px;
+    margin-bottom: 15px;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input, select, button {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus, select:focus {
+    border-color: #2980b9;
+    box-shadow: 0 0 5px #2980b9;
+}
+
+button {
+    background-color: #2980b9;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+}
+
+button:hover {
+    background-color: #1f618d;
+}
+
+ul {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+}
+
+ul li {
+    background-color: #fff;
+    margin-bottom: 12px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgb(0 0 0 / 0.1);
+    font-weight: 600;
+    color: #34495e;
+}
+
+.error-message {
+    max-width: 400px;
+    margin: 0 auto 15px auto;
+    padding: 10px 15px;
+    background-color: #ffcccc;
+    border: 1px solid #ff6666;
+    border-radius: 6px;
+    color: #a80000;
+    font-weight: bold;
+    text-align: center;
+}
+
+.price-table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    max-width: 400px;
+    width: 90%;
+}
+
+.price-table th,
+.price-table td {
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.price-table th {
+    background-color: #2980b9;
+    color: white;
+}
+
+.cancel-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.cancel-btn:hover {
+    background-color: #c0392b;
+}
+
+.edit-btn {
+    margin-left: 10px;
+    color: #2980b9;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.edit-btn:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+    form, ul, .price-table {
+        max-width: 90%;
+    }
+}
